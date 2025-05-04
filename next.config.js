@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-const isProd = true
+const isProd = process.env.NODE_ENV === 'production';
 const repoName = 'aspire-website'; // Replace with your actual repo name if different
 
 const nextConfig = {
