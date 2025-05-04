@@ -92,7 +92,7 @@ export default function Services() {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white bg-clip-text max-w-4xl mx-auto">
               Empowering Your Digital Future with{' '}
               <span className="bg-gradient-to-r from-secondary-400 to-accent-400 bg-clip-text text-transparent">
-                Cutting-Edge Solutions
+                Cutting-Edge Solutions 
               </span>
             </h1>
           </div>
