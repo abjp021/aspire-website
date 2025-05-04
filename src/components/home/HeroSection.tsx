@@ -15,7 +15,7 @@ export default function HeroSection() {
 
   return (
     <header
-      className="relative overflow-hidden bg-primary-500"
+      className="relative z-40 overflow-hidden bg-primary-500"
       role="banner"
       aria-label="Aspiretechno Global IT Solutions Hero"
     >
@@ -72,11 +72,10 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      <div className="mx-auto max-w-7xl">
-        <div className="relative z-10 pb-8 sm:pb-16 md:pb-20 lg:w-full lg:max-w-2xl lg:pb-28 xl:pb-32">
-          <main className="mx-auto mt-10 max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-            <div className="sm:text-center lg:text-left">
-              
+      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 w-full lg:w-2/3 xl:w-1/2 pt-16 sm:pt-20 md:pt-24 lg:pt-28 pb-8">
+          <main className="mx-auto max-w-7xl">
+            <div className="flex flex-col items-center lg:items-start text-center lg:text-left pt-4 lg:pt-0">
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
