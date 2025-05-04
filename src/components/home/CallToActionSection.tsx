@@ -17,7 +17,7 @@ const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50">
+        <div className="fixed inset-0 flex items-center justify-center z-[9999]">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -297,7 +297,7 @@ const DemoForm = ({ onClose }: { onClose: () => void }) => {
           name="solutions"
           value={formData.solutions}
           options={solutions}
-          onChange={(value) => handleSelectChange('solutions', value)}
+          onChange={(value: any) => handleSelectChange('solutions', value)}
           className="rounded-lg"
           classNamePrefix="select"
           placeholder="Select solutions..."
@@ -481,7 +481,7 @@ const QuoteForm = ({ onClose }: { onClose: () => void }) => {
           name="projectTypes"
           value={formData.projectTypes}
           options={projectTypes}
-          onChange={(value) => handleSelectChange('projectTypes', value)}
+          onChange={(value: any) => handleSelectChange('projectTypes', value)}
           className="rounded-lg"
           classNamePrefix="select"
           placeholder="Select project types..."
@@ -659,7 +659,7 @@ const ConsultationForm = ({ onClose }: { onClose: () => void }) => {
           name="areasOfInterest"
           value={formData.areasOfInterest}
           options={challenges}
-          onChange={(value) => handleSelectChange('areasOfInterest', value)}
+          onChange={(value: any) => handleSelectChange('areasOfInterest', value)}
           className="rounded-lg"
           classNamePrefix="select"
           placeholder="Select areas..."

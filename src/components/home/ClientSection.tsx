@@ -99,7 +99,7 @@ export default function ClientSection() {
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
         className="bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl relative"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
