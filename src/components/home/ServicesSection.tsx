@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { services, Service } from '@/app/services/servicesData';
+import { serviceIcons } from '@/app/services/iconMappings';
 
 const categories = {
   all: 'All Services',
@@ -63,31 +64,34 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-          {filteredServices.map((service: Service) => (
-            <div
-              key={service.id}
-              className="group relative h-full"
-            >
-              <a
-                href={`/services/${service.id}`}
-                className="block relative bg-white rounded-lg p-4 shadow-soft-md transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1 border border-gray-100 h-full flex flex-col"
+          {filteredServices.map((service: Service) => {
+            const IconComponent = serviceIcons[service.iconKey];
+            return (
+              <div
+                key={service.id}
+                className="group relative h-full"
               >
-                <div className="flex items-center mb-3">
-                  <div className="flex h-8 w-8 items-center justify-center rounded-md bg-blue-500 text-white shadow-soft-sm group-hover:scale-110 transition-all duration-300">
-                    <service.icon className="w-5 h-5" />
+                <a
+                  href={`/services/${service.id}`}
+                  className="block relative bg-white rounded-lg p-4 shadow-soft-md transition-all duration-300 hover:shadow-soft-lg hover:-translate-y-1 border border-gray-100 h-full flex flex-col"
+                >
+                  <div className="flex items-center mb-3">
+                    <div className="flex h-8 w-8 items-center justify-center rounded-md bg-blue-500 text-white shadow-soft-sm group-hover:scale-110 transition-all duration-300">
+                      <IconComponent />
+                    </div>
+                    <h3 className="text-base font-bold text-gray-900 ml-2">{service.title}</h3>
                   </div>
-                  <h3 className="text-base font-bold text-gray-900 ml-2">{service.title}</h3>
-                </div>
-                <p className="text-gray-600 text-xs mb-2 flex-grow line-clamp-3">{service.description}</p>
-                <div className="flex items-center text-blue-500 text-xs font-medium mt-auto">
-                  Learn More
-                  <svg className="h-3 w-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </div>
-              </a>
-            </div>
-          ))}
+                  <p className="text-gray-600 text-xs mb-2 flex-grow line-clamp-3">{service.description}</p>
+                  <div className="flex items-center text-blue-500 text-xs font-medium mt-auto">
+                    Learn More
+                    <svg className="h-3 w-3 ml-1 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </div>
+                </a>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>

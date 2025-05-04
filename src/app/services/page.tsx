@@ -18,6 +18,7 @@ import {
 } from 'react-icons/hi2';
 import { useInView } from 'react-intersection-observer';
 import { services, stats, testimonials, Service } from './servicesData';
+import { serviceIcons, statIcons } from './iconMappings';
 
 interface AnimatedNumberProps {
   value: string | number;
@@ -98,28 +99,31 @@ export default function Services() {
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-3 gap-3 max-w-7xl mx-auto relative">
-            {services.map((service: Service) => (
-              <div
-                key={service.id}
-                className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
-                <Link
-                  href={`/services/${service.id}`}
-                  className="block relative flex-1 flex flex-col"
+            {services.map((service: Service) => {
+              const IconComponent = serviceIcons[service.iconKey];
+              return (
+                <div
+                  key={service.id}
+                  className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col"
                 >
-                  <div className="flex items-center mb-2">
-                    <service.icon className={`w-5 h-5 text-white mr-2 flex-shrink-0`} />
-                    <h3 className="text-base font-medium text-white line-clamp-1">{service.title}</h3>
-                  </div>
-                  <p className="text-white/80 text-sm mb-2 line-clamp-2 flex-1">{service.description}</p>
-                  <div className="flex items-center text-sm text-white/90 hover:text-white mt-auto">
-                    Learn more
-                    <span className="ml-1">→</span>
-                  </div>
-                </Link>
-              </div>
-            ))}
+                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300`}></div>
+                  <Link
+                    href={`/services/${service.id}`}
+                    className="block relative flex-1 flex flex-col"
+                  >
+                    <div className="flex items-center mb-2">
+                      <IconComponent className={`w-5 h-5 text-white mr-2 flex-shrink-0`} />
+                      <h3 className="text-base font-medium text-white line-clamp-1">{service.title}</h3>
+                    </div>
+                    <p className="text-white/80 text-sm mb-2 line-clamp-2 flex-1">{service.description}</p>
+                    <div className="flex items-center text-sm text-white/90 hover:text-white mt-auto">
+                      Learn more
+                      <span className="ml-1">→</span>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -128,27 +132,30 @@ export default function Services() {
       <div className="bg-gradient-to-b from-white to-gray-50 py-12">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="text-center relative group"
-              >
-                <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl blur-xl`} />
-                <div className="relative">
-                  <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-xl ${stat.color} mb-6 group-hover:scale-110 transition-all duration-300`}>
-                    <stat.icon className="w-10 h-10" />
+            {stats.map((stat) => {
+              const StatIcon = statIcons[stat.iconKey as keyof typeof statIcons];
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="text-center relative group"
+                >
+                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.gradient} opacity-0 group-hover:opacity-100 transition-all duration-500 rounded-2xl blur-xl`} />
+                  <div className="relative">
+                    <div className={`inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-white shadow-xl ${stat.color} mb-6 group-hover:scale-110 transition-all duration-300`}>
+                      <StatIcon className="w-10 h-10" />
+                    </div>
+                    <div className="text-4xl font-bold text-gray-900 mb-2">
+                      <AnimatedNumber value={stat.value} suffix={stat.suffix} />
+                    </div>
+                    <div className="text-base text-gray-600 font-medium">{stat.label}</div>
                   </div>
-                  <div className="text-4xl font-bold text-gray-900 mb-2">
-                    <AnimatedNumber value={stat.value} suffix={stat.suffix} />
-                  </div>
-                  <div className="text-base text-gray-600 font-medium">{stat.label}</div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

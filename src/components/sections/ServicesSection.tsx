@@ -5,6 +5,7 @@ import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import { services, Service } from '@/app/services/servicesData';
 import React from 'react';
+import { serviceIcons } from '@/app/services/iconMappings';
 
 export default function ServicesSection() {
   const [ref, inView] = useInView({
@@ -46,34 +47,37 @@ export default function ServicesSection() {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.slice(0, 6).map((service: Service, index: number) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative rounded-xl bg-white p-8 shadow-soft-lg transition-all duration-300 hover:shadow-soft-xl hover:-translate-y-1"
-            >
-              <div className="absolute -top-4 left-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 shadow-soft-lg group-hover:shadow-glow-primary transition-all duration-300">
-                {React.createElement(service.icon)}
-              </div>
-              <div className="mt-8">
-                <h3 className="text-xl font-semibold text-dark-500 font-heading">{service.title}</h3>
-                <p className="mt-3 text-base text-gray-500">{service.description}</p>
-                <div className="mt-6">
-                  <Link
-                    href={`/services/${service.id}`}
-                    className="inline-flex items-center rounded-md bg-secondary-500 px-4 py-2 text-sm font-medium text-white hover:bg-secondary-600 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 transition-all duration-300 hover:shadow-glow-secondary"
-                  >
-                    Know More
-                    <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+          {services.slice(0, 6).map((service: Service, index: number) => {
+            const IconComponent = serviceIcons[service.iconKey];
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group relative rounded-xl bg-white p-8 shadow-soft-lg transition-all duration-300 hover:shadow-soft-xl hover:-translate-y-1"
+              >
+                <div className="absolute -top-4 left-6 flex h-12 w-12 items-center justify-center rounded-xl bg-primary-50 text-primary-600 shadow-soft-lg group-hover:shadow-glow-primary transition-all duration-300">
+                  <IconComponent />
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                <div className="mt-8">
+                  <h3 className="text-xl font-semibold text-dark-500 font-heading">{service.title}</h3>
+                  <p className="mt-3 text-base text-gray-500">{service.description}</p>
+                  <div className="mt-6">
+                    <Link
+                      href={`/services/${service.id}`}
+                      className="inline-flex items-center rounded-md bg-secondary-500 px-4 py-2 text-sm font-medium text-white hover:bg-secondary-600 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 transition-all duration-300 hover:shadow-glow-secondary"
+                    >
+                      Know More
+                      <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         <div className="mt-12 text-center">

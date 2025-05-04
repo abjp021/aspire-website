@@ -1,16 +1,4 @@
-import { 
-  HiOutlineShieldCheck, 
-  HiOutlineQrCode, 
-  HiOutlineCloud, 
-  HiOutlinePhone, 
-  HiOutlineStar, 
-  HiOutlineCheckCircle, 
-  HiOutlineSquares2X2,
-  HiOutlineServerStack,
-  HiOutlineVideoCameraSlash,
-  HiOutlineSignal,
-  HiOutlineWrench
-} from 'react-icons/hi2';
+import { ServiceIconKey } from './iconMappings';
 
 export const services = [
   {
@@ -18,7 +6,7 @@ export const services = [
     title: 'Networking',
     category: 'networking',
     description: 'In today\'s interconnected world, reliable and secure networking solutions are essential for businesses to operate smoothly. We offer end-to-end networking services, from consultation and design to implementation and ongoing management.',
-    icon: HiOutlineQrCode,
+    iconKey: 'networking' as ServiceIconKey,
     color: 'blue',
     gradient: 'from-blue-500/20 to-purple-500/20',
     features: [
@@ -33,7 +21,7 @@ export const services = [
     title: 'Data Centre and Server Solutions',
     category: 'infrastructure',
     description: 'Scalable, resilient, and high-performing infrastructure solutions with comprehensive security measures and compliance management.',
-    icon: HiOutlineCloud,
+    iconKey: 'data-centre' as ServiceIconKey,
     color: 'green',
     gradient: 'from-green-500/20 to-teal-500/20',
     features: [
@@ -48,7 +36,7 @@ export const services = [
     title: 'Data Storage Solutions',
     category: 'infrastructure',
     description: 'Protecting your critical data with efficient and secure storage solutions that ensure accessibility and security.',
-    icon: HiOutlineSquares2X2,
+    iconKey: 'data-storage' as ServiceIconKey,
     color: 'yellow',
     gradient: 'from-yellow-500/20 to-orange-500/20',
     features: [
@@ -63,7 +51,7 @@ export const services = [
     title: 'Virtualization',
     category: 'infrastructure',
     description: 'Advanced virtualization solutions to optimize resource utilization and enhance operational efficiency.',
-    icon: HiOutlineServerStack,
+    iconKey: 'virtualization' as ServiceIconKey,
     color: 'purple',
     gradient: 'from-purple-500/20 to-indigo-500/20',
     features: [
@@ -78,7 +66,7 @@ export const services = [
     title: 'Cyber-Security',
     category: 'security',
     description: 'Comprehensive protection for your digital assets and data with advanced security measures.',
-    icon: HiOutlineShieldCheck,
+    iconKey: 'cyber-security' as ServiceIconKey,
     color: 'red',
     gradient: 'from-red-500/20 to-pink-500/20',
     features: [
@@ -93,7 +81,7 @@ export const services = [
     title: 'Backup Solutions',
     category: 'infrastructure',
     description: 'Safeguarding your business continuity with reliable and automated backup solutions.',
-    icon: HiOutlineCloud,
+    iconKey: 'backup-solution' as ServiceIconKey,
     color: 'indigo',
     gradient: 'from-indigo-500/20 to-blue-500/20',
     features: [
@@ -108,7 +96,7 @@ export const services = [
     title: 'Video Conferencing & CCTV',
     category: 'security',
     description: 'Advanced communication and security systems for modern business needs.',
-    icon: HiOutlineVideoCameraSlash,
+    iconKey: 'video-conferencing' as ServiceIconKey,
     color: 'teal',
     gradient: 'from-teal-500/20 to-green-500/20',
     features: [
@@ -123,7 +111,7 @@ export const services = [
     title: 'Wireless & Structured Cabling',
     category: 'networking',
     description: 'Streamlined, future-proof connectivity solutions for your business infrastructure.',
-    icon: HiOutlineSignal,
+    iconKey: 'wireless-networking' as ServiceIconKey,
     color: 'cyan',
     gradient: 'from-cyan-500/20 to-blue-500/20',
     features: [
@@ -138,7 +126,7 @@ export const services = [
     title: 'Annual Maintenance Contracts',
     category: 'infrastructure',
     description: 'Proactive IT support ensuring uninterrupted operations and peak system performance.',
-    icon: HiOutlineWrench,
+    iconKey: 'maintenance' as ServiceIconKey,
     color: 'amber',
     gradient: 'from-amber-500/20 to-yellow-500/20',
     features: [
@@ -157,7 +145,7 @@ export const stats = [
     label: 'Network Uptime', 
     value: '99.99', 
     suffix: '%',
-    icon: HiOutlineCheckCircle,
+    iconKey: 'uptime',
     color: 'text-emerald-500',
     gradient: 'from-emerald-500/20 to-teal-500/20'
   },
@@ -165,7 +153,7 @@ export const stats = [
     label: 'Protected Endpoints', 
     value: '50', 
     suffix: 'K+',
-    icon: HiOutlineShieldCheck,
+    iconKey: 'endpoints',
     color: 'text-blue-500',
     gradient: 'from-blue-500/20 to-indigo-500/20'
   },
@@ -173,7 +161,7 @@ export const stats = [
     label: 'Data Centers', 
     value: '10', 
     suffix: '+',
-    icon: HiOutlineCloud,
+    iconKey: 'datacenters',
     color: 'text-purple-500',
     gradient: 'from-purple-500/20 to-violet-500/20'
   },
@@ -181,7 +169,7 @@ export const stats = [
     label: 'Client Satisfaction', 
     value: '99', 
     suffix: '%',
-    icon: HiOutlineStar,
+    iconKey: 'satisfaction',
     color: 'text-amber-500',
     gradient: 'from-amber-500/20 to-yellow-500/20'
   }
