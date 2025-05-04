@@ -9,8 +9,8 @@ import Select from 'react-select';
 interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
-  children: React.ReactNode;
   title: string;
+  children?: React.ReactNode;
 }
 
 const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {

@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
-import { services } from '@/app/services/page';
+import { services, Service } from '@/app/services/servicesData';
 import React from 'react';
 
 export default function ServicesSection() {
@@ -46,7 +46,7 @@ export default function ServicesSection() {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {services.slice(0, 6).map((service, index) => (
+          {services.slice(0, 6).map((service: Service, index: number) => (
             <motion.div
               key={service.id}
               initial={{ opacity: 0, y: 20 }}

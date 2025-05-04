@@ -4,14 +4,14 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
-import { services } from '../page';
-import { Service } from '@/types';
+import { services, Service } from '../servicesData';
 import { useState, useRef, useEffect } from 'react';
 import CallToActionSection from '@/components/home/CallToActionSection';
+import { ReactNode } from 'react';
 
 export default function ServicePage() {
   const params = useParams();
-  const service = services.find((s) => s.id === params.id) as Service | undefined;
+  const service = services.find((s: Service) => s.id === params.id) as Service | undefined;
 
   const [ref, inView] = useInView({
     triggerOnce: true,
@@ -19,7 +19,7 @@ export default function ServicePage() {
   });
 
   const getSubServices = (serviceId: string) => {
-    const subServicesMap: { [key: string]: Array<{ title: string; description: string; icon: JSX.Element }> } = {
+    const subServicesMap: { [key: string]: Array<{ title: string; description: string; icon: ReactNode }> } = {
       networking: [
         {
           title: 'Network Design and Architecture',
@@ -527,7 +527,7 @@ export default function ServicePage() {
       <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
         <h3 className="text-2xl font-bold text-primary-700 mb-6 text-center">Related Services in {service.category.charAt(0).toUpperCase() + service.category.slice(1)}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.filter(s => s.category === service.category && s.id !== service.id).map(related => (
+          {services.filter((s: Service) => s.category === service.category && s.id !== service.id).map((related: Service) => (
             <Link key={related.id} href={`/services/${related.id}`} className="block bg-white rounded-xl shadow-soft-md hover:shadow-soft-lg transition-all duration-300 p-6 border border-gray-100 group">
               <div className="flex items-center mb-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md bg-blue-500 text-white shadow-soft-sm group-hover:scale-110 transition-all duration-300">
@@ -546,4 +546,4 @@ export default function ServicePage() {
       <CallToActionSection />
     </div>
   );
-} 
+}

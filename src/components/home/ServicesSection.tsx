@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { services, Service } from '@/app/services/page';
+import { services, Service } from '@/app/services/servicesData';
 
 const categories = {
   all: 'All Services',
@@ -18,7 +18,7 @@ export default function ServicesSection() {
 
   const filteredServices = activeCategory === 'all' 
     ? services 
-    : services.filter(service => service.category === activeCategory);
+    : services.filter((service: Service) => service.category === activeCategory);
 
   return (
     <div className="py-20 bg-gray-50 relative overflow-hidden">
@@ -63,7 +63,7 @@ export default function ServicesSection() {
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto">
-          {filteredServices.map((service) => (
+          {filteredServices.map((service: Service) => (
             <div
               key={service.id}
               className="group relative h-full"
