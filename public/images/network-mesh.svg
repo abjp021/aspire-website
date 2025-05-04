@@ -1,0 +1,10 @@
+<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <pattern id="network-mesh" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="1" fill="#1B9CFC" opacity="0.3" />
+      <line x1="0" y1="10" x2="20" y2="10" stroke="#1B9CFC" stroke-width="0.5" opacity="0.2" />
+      <line x1="10" y1="0" x2="10" y2="20" stroke="#1B9CFC" stroke-width="0.5" opacity="0.2" />
+    </pattern>
+  </defs>
+  <rect x="0" y="0" width="100" height="100" fill="url(#network-mesh)" />
+</svg> 
