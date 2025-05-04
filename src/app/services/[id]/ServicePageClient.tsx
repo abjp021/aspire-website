@@ -38,15 +38,6 @@ export default function ServicePageClient({ service, subServices }: ServicePageC
         <div className="absolute inset-0 bg-glow-primary"></div>
         <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-              transition={{ duration: 0.5 }}
-              className="inline-flex items-center rounded-full bg-primary-50 px-3 py-1 text-sm font-medium text-primary-600"
-            >
-              <span className="mr-2">🚀</span>
-              <span>{service.category}</span>
-            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
