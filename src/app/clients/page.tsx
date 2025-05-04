@@ -10,7 +10,7 @@ export default function ClientsPage() {
           </h1>
           <p className="text-lg text-dark-600 max-w-2xl mx-auto">
             We are proud to work with industry leaders and innovative companies across various sectors.
-            Our partnerships drive mutual success and technological advancements.
+            Our partnerships drive mutual success and technological advancement.
           </p>
         </div>
         <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-soft-xl p-8">

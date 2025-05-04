@@ -98,7 +98,7 @@ export default function Services() {
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-3 gap-3 max-w-7xl mx-auto relative">
-            {services.map((service) => (
+            {services.map((service: Service) => (
               <div
                 key={service.id}
                 className="group relative bg-white/10 backdrop-blur-sm rounded-xl p-4 border border-white/20 hover:bg-white/20 transition-all duration-300 flex flex-col"
