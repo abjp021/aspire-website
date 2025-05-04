@@ -38,8 +38,9 @@ const steps = [
 
 export default function ProcessSection() {
   const { ref, inView } = useInView({
-    threshold: 0.1,
+    threshold: 0,
     triggerOnce: true,
+    rootMargin: '-30% 0px',
   });
 
   const containerVariants = {
@@ -70,7 +71,7 @@ export default function ProcessSection() {
   };
 
   return (
-    <div className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <div ref={ref} className="py-16 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 bg-tech-pattern opacity-5"></div>
       <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-blue-100/40 to-transparent rounded-bl-full"></div>

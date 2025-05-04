@@ -157,6 +157,18 @@ const BackgroundShapes = () => {
   );
 };
 
+// Custom hook to detect mobile view
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+  return isMobile;
+}
+
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -247,124 +259,129 @@ export default function TestimonialsSection() {
         </motion.div>
 
         <div 
-          className="relative h-[450px]"
+          className="relative h-auto sm:h-[450px] overflow-visible"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
           <AnimatePresence initial={false} custom={direction}>
-            <motion.div
-              key={currentIndex}
-              custom={direction}
-              variants={slideVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                x: { type: "spring", stiffness: 300, damping: 30 },
-                opacity: { duration: 0.4 },
-                scale: { duration: 0.4 }
-              }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = swipePower(offset.x, velocity.x);
-                if (swipe < -swipeConfidenceThreshold) {
-                  paginate(1);
-                } else if (swipe > swipeConfidenceThreshold) {
-                  paginate(-1);
-                }
-              }}
-              className="absolute w-full"
-            >
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="bg-white rounded-2xl shadow-soft-lg p-8 md:p-12 border border-gray-100 hover:shadow-soft-xl transition-all duration-300"
-              >
-                <div className="flex flex-col md:flex-row gap-8 items-center">
-                  <div className="w-full md:w-1/3">
-                    <motion.div 
-                      initial={{ scale: 0.9, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ delay: 0.3 }}
-                      className="relative w-40 h-40 mx-auto"
-                    >
-                      {testimonials[currentIndex].image ? (
-                        <Image
-                          src={testimonials[currentIndex].image}
-                          alt={testimonials[currentIndex].author}
-                          fill
-                          className="object-cover rounded-full ring-4 ring-white shadow-soft-lg hover:scale-105 transition-transform duration-300"
-                        />
-                      ) : (
-                        <div className="w-full h-full rounded-full ring-4 ring-white shadow-soft-lg bg-gray-100 flex items-center justify-center hover:scale-105 transition-transform duration-300">
-                          <HiUser className="w-20 h-20 text-gray-400" />
-                        </div>
-                      )}
-                      <motion.div 
-                        initial={{ y: 20, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ delay: 0.4 }}
-                        className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-soft-md hover:shadow-soft-lg transition-all duration-300 whitespace-nowrap max-w-[140px] overflow-hidden text-ellipsis"
-                      >
-                        {testimonials[currentIndex].tags[0]}
-                      </motion.div>
-                    </motion.div>
-                  </div>
-                  
-                  <div className="w-full md:w-2/3 text-center md:text-left">
-                    <motion.div 
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: 0.5 }}
-                      className="flex gap-1 justify-center md:justify-start mb-6"
-                    >
-                      {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
-                        <motion.svg
-                          key={i}
-                          initial={{ opacity: 0, scale: 0, rotate: -180 }}
-                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
-                          transition={{ delay: 0.5 + i * 0.1 }}
-                          className="w-6 h-6 text-yellow-400 fill-current transform hover:scale-110 transition-transform duration-200"
-                          viewBox="0 0 20 20"
+            {(() => {
+              const isMobile = useIsMobile();
+              return (
+                <motion.div
+                  key={currentIndex}
+                  custom={direction}
+                  variants={slideVariants}
+                  initial={isMobile ? { opacity: 1, y: 0 } : 'enter'}
+                  animate={isMobile ? { opacity: 1, y: 0 } : 'center'}
+                  exit={isMobile ? { opacity: 1, y: 0 } : 'exit'}
+                  transition={{
+                    x: { type: "spring", stiffness: 300, damping: 30 },
+                    opacity: { duration: 0.4 },
+                    scale: { duration: 0.4 }
+                  }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={1}
+                  onDragEnd={(e: MouseEvent | TouchEvent | PointerEvent, { offset, velocity }: { offset: { x: number }, velocity: { x: number } }) => {
+                    const swipe = swipePower(offset.x, velocity.x);
+                    if (swipe < -swipeConfidenceThreshold) {
+                      paginate(1);
+                    } else if (swipe > swipeConfidenceThreshold) {
+                      paginate(-1);
+                    }
+                  }}
+                  className="w-full static sm:absolute"
+                >
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="bg-white rounded-2xl shadow-soft-lg p-4 sm:p-8 md:p-12 border border-gray-100 hover:shadow-soft-xl transition-all duration-300 w-full max-w-full"
+                  >
+                    <div className="flex flex-col md:flex-row gap-4 sm:gap-8 items-center">
+                      <div className="w-full md:w-1/3 flex justify-center">
+                        <motion.div 
+                          initial={{ scale: 0.9, opacity: 0 }}
+                          animate={{ scale: 1, opacity: 1 }}
+                          transition={{ delay: 0.3 }}
+                          className="relative w-24 h-24 sm:w-40 sm:h-40 mx-auto flex flex-col"
                         >
-                          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                        </motion.svg>
-                      ))}
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.6 }}
-                      className="relative"
-                    >
-                      <div className="absolute -left-4 top-0 text-6xl text-gray-100 font-serif">"</div>
-                      <p className="text-xl text-gray-700 italic mb-8 leading-relaxed relative z-10">
-                        {testimonials[currentIndex].content}
-                      </p>
-                      <div className="absolute -right-4 bottom-0 text-6xl text-gray-100 font-serif">"</div>
-                    </motion.div>
-                    
-                    <motion.div 
-                      initial={{ opacity: 0, y: 20 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.7 }}
-                      className="space-y-2"
-                    >
-                      <div className="font-bold text-gray-900 text-xl">
-                        {testimonials[currentIndex].author}
+                          {testimonials[currentIndex].image ? (
+                            <Image
+                              src={testimonials[currentIndex].image}
+                              alt={testimonials[currentIndex].author}
+                              fill
+                              className="object-cover rounded-full ring-4 ring-white shadow-soft-lg hover:scale-105 transition-transform duration-300"
+                            />
+                          ) : (
+                            <div className="w-full h-full rounded-full ring-4 ring-white shadow-soft-lg bg-gray-100 flex items-center justify-center hover:scale-105 transition-transform duration-300">
+                              <HiUser className="w-20 h-20 text-gray-400" />
+                            </div>
+                          )}
+                          <motion.div
+                            initial={{ y: 20, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ delay: 0.4 }}
+                            className="hidden sm:flex bg-blue-600 text-white px-4 py-1.5 rounded-full text-sm font-medium shadow-soft-md hover:shadow-soft-lg transition-all duration-300 whitespace-nowrap max-w-[140px] overflow-hidden text-ellipsis sm:absolute sm:-bottom-4 sm:left-1/2 sm:-translate-x-1/2"
+                          >
+                            {testimonials[currentIndex].tags[0]}
+                          </motion.div>
+                        </motion.div>
                       </div>
-                      <div className="text-gray-600 font-medium">
-                        {testimonials[currentIndex].position} • {testimonials[currentIndex].company}
+                      
+                      <div className="w-full md:w-2/3 text-center md:text-left">
+                        <motion.div 
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          transition={{ delay: 0.5 }}
+                          className="flex gap-1 justify-center md:justify-start mb-6"
+                        >
+                          {[...Array(testimonials[currentIndex].rating)].map((_, i) => (
+                            <motion.svg
+                              key={i}
+                              initial={{ opacity: 0, scale: 0, rotate: -180 }}
+                              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                              transition={{ delay: 0.5 + i * 0.1 }}
+                              className="w-6 h-6 text-yellow-400 fill-current transform hover:scale-110 transition-transform duration-200"
+                              viewBox="0 0 20 20"
+                            >
+                              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </motion.svg>
+                          ))}
+                        </motion.div>
+                        
+                        <motion.div 
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.6 }}
+                          className="relative"
+                        >
+                          <div className="absolute -left-4 top-0 text-6xl text-gray-100 font-serif">"</div>
+                          <p className="text-base sm:text-xl text-gray-700 italic mb-4 sm:mb-8 leading-relaxed relative z-10">
+                            {testimonials[currentIndex].content}
+                          </p>
+                          <div className="absolute -right-4 bottom-0 text-6xl text-gray-100 font-serif">"</div>
+                        </motion.div>
+                        
+                        <motion.div 
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.7 }}
+                          className="space-y-2"
+                        >
+                          <div className="font-bold text-gray-900 text-base sm:text-xl">
+                            {testimonials[currentIndex].author}
+                          </div>
+                          <div className="text-gray-600 font-medium text-sm sm:text-base">
+                            {testimonials[currentIndex].position} • {testimonials[currentIndex].company}
+                          </div>
+                        </motion.div>
                       </div>
-                    </motion.div>
-                  </div>
-                </div>
-              </motion.div>
-            </motion.div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              );
+            })()}
           </AnimatePresence>
 
           {/* Progress bar */}
@@ -379,8 +396,8 @@ export default function TestimonialsSection() {
             />
           </div>
 
-          {/* Navigation buttons */}
-          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 flex justify-between z-10 px-4">
+          {/* Navigation buttons - overlay for sm+ */}
+          <div className="absolute left-0 right-0 top-1/2 -translate-y-1/2 hidden sm:flex justify-between z-10 px-4">
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -396,6 +413,23 @@ export default function TestimonialsSection() {
               className="bg-white/90 backdrop-blur-sm rounded-full p-3 text-gray-800 hover:text-blue-500 transition-all duration-300 shadow-soft-md hover:shadow-soft-lg"
             >
               <HiOutlineChevronRight className="w-7 h-7" />
+            </motion.button>
+          </div>
+          {/* Navigation buttons - below card for mobile */}
+          <div className="flex sm:hidden justify-between mt-4">
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => paginate(-1)}
+              className="bg-white/90 backdrop-blur-sm rounded-full p-2 text-gray-800 hover:text-blue-500 transition-all duration-300 shadow-soft-md hover:shadow-soft-lg"
+            >
+              <HiOutlineChevronLeft className="w-6 h-6" />
+            </motion.button>
+            <motion.button
+              whileTap={{ scale: 0.95 }}
+              onClick={() => paginate(1)}
+              className="bg-white/90 backdrop-blur-sm rounded-full p-2 text-gray-800 hover:text-blue-500 transition-all duration-300 shadow-soft-md hover:shadow-soft-lg"
+            >
+              <HiOutlineChevronRight className="w-6 h-6" />
             </motion.button>
           </div>
         </div>
