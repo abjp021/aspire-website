@@ -44,11 +44,32 @@ export default function Contact() {
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
     try {
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      setSubmitSuccess(true);
-      reset();
+      const response = await fetch('https://formspree.io/f/xpwdlbrq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: 'Contact Form',
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          phone: data.phone,
+          serviceType: data.serviceType,
+          budget: data.budget,
+          message: data.message
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+        reset();
+      } else {
+        throw new Error('Failed to submit form');
+      }
     } catch (error) {
       console.error('Error submitting form:', error);
+      // You might want to show an error message to the user here
     } finally {
       setIsSubmitting(false);
     }

@@ -91,42 +91,91 @@ export default function ClientSection() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
       className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4"
       onClick={onClose}
     >
       <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        exit={{ scale: 0.95, opacity: 0 }}
+        initial={{ scale: 0.95, opacity: 0, y: 20 }}
+        animate={{ 
+          scale: 1, 
+          opacity: 1, 
+          y: 0,
+          transition: {
+            type: "spring",
+            stiffness: 300,
+            damping: 25
+          }
+        }}
+        exit={{ 
+          scale: 0.95, 
+          opacity: 0, 
+          y: 20,
+          transition: {
+            duration: 0.2
+          }
+        }}
         className="bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl relative"
         onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
       >
-        <button
+        <motion.button
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ delay: 0.2 }}
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
         >
           <IoClose size={24} />
-        </button>
+        </motion.button>
         
-        <div className="flex items-start space-x-4 mb-4">
-          <div className="relative w-16 h-16 flex-shrink-0">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="flex items-start space-x-4 mb-4"
+        >
+          <motion.div 
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2 }}
+            className="relative w-16 h-16 flex-shrink-0"
+          >
             <Image
               src={client.logo}
               alt={client.name}
               fill
               className="object-contain"
             />
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+          >
             <h3 className="text-xl font-bold text-gray-900">{client.name}</h3>
             <p className="text-gray-600">{client.summary}</p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         
-        <div className="mt-4">
+        <motion.div 
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4 }}
+          className="mt-4"
+        >
           <h4 className="text-lg font-semibold text-gray-900 mb-2">Our Work Together</h4>
-          <p className="text-gray-700 leading-relaxed">{client.workDone}</p>
-        </div>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="text-gray-700 leading-relaxed"
+          >
+            {client.workDone}
+          </motion.p>
+        </motion.div>
       </motion.div>
     </motion.div>
   );
@@ -173,7 +222,10 @@ export default function ClientSection() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative"
                 >
-                  <div className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative">
+                  <div 
+                    onClick={() => setSelectedClient(client)}
+                    className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
+                  >
                     <div className="relative w-full h-full">
                       <Image
                         src={client.logo}
@@ -184,12 +236,6 @@ export default function ClientSection() {
                         priority={idx < 4}
                         loading={idx < 4 ? 'eager' : 'lazy'}
                       />
-                      <button
-                        onClick={() => setSelectedClient(client)}
-                        className="absolute top-0 right-0 p-1 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white"
-                      >
-                        <IoInformationCircle className="w-5 h-5 text-primary-500" />
-                      </button>
                     </div>
                   </div>
                 </motion.div>
@@ -203,7 +249,10 @@ export default function ClientSection() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative"
                 >
-                  <div className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative">
+                  <div 
+                    onClick={() => setSelectedClient(client)}
+                    className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
+                  >
                     <div className="relative w-full h-full">
                       <Image
                         src={client.logo}
@@ -213,12 +262,6 @@ export default function ClientSection() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         loading="lazy"
                       />
-                      <button
-                        onClick={() => setSelectedClient(client)}
-                        className="absolute top-0 right-0 p-1 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white"
-                      >
-                        <IoInformationCircle className="w-5 h-5 text-primary-500" />
-                      </button>
                     </div>
                   </div>
                 </motion.div>
@@ -232,7 +275,10 @@ export default function ClientSection() {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative"
                 >
-                  <div className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative">
+                  <div 
+                    onClick={() => setSelectedClient(client)}
+                    className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
+                  >
                     <div className="relative w-full h-full">
                       <Image
                         src={client.logo}
@@ -242,12 +288,6 @@ export default function ClientSection() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         loading="lazy"
                       />
-                      <button
-                        onClick={() => setSelectedClient(client)}
-                        className="absolute top-0 right-0 p-1 bg-white/80 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-white"
-                      >
-                        <IoInformationCircle className="w-5 h-5 text-primary-500" />
-                      </button>
                     </div>
                   </div>
                 </motion.div>

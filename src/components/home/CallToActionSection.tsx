@@ -208,7 +208,23 @@ const FormFooter = ({ onClose, isLoading, error, success, successMessage }: { on
   </div>
 );
 
-const DemoForm = ({ onClose }: { onClose: () => void }) => {
+interface FormProps {
+  onClose: () => void;
+  type: 'demo' | 'quote' | 'consultation';
+}
+
+const getFormTitle = (type: FormProps['type']) => {
+  switch (type) {
+    case 'demo':
+      return 'Schedule a Demo';
+    case 'quote':
+      return 'Request a Quote';
+    case 'consultation':
+      return 'Book a Consultation';
+  }
+};
+
+const DemoForm = ({ onClose, type }: FormProps) => {
   const { formData, errors, handleChange, handleSelectChange, validateForm } = useFormValidation({
     email: '',
     phone: '',
@@ -224,14 +240,43 @@ const DemoForm = ({ onClose }: { onClose: () => void }) => {
     success: false
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoadingState({ isLoading: true, error: null, success: false });
-    logFormSubmission('demo', formData);
-    setLoadingState({ isLoading: false, error: null, success: true });
-    setTimeout(onClose, 2000);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xpwdlbrq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: getFormTitle(type),
+          email: formData.email,
+          phone: formData.phone,
+          solutions: formData.solutions?.map(s => s.label).join(', '),
+          companySize: formData.companySize,
+          additionalRequirements: formData.additionalRequirements,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime
+        }),
+      });
+
+      if (response.ok) {
+        setLoadingState({ isLoading: false, error: null, success: true });
+        setTimeout(onClose, 2000);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      setLoadingState({ 
+        isLoading: false, 
+        error: 'Failed to submit form. Please try again.', 
+        success: false 
+      });
+    }
   };
 
   return (
@@ -392,7 +437,7 @@ const projectTypes = [
   { value: 'migration', label: 'Data Migration' }
 ];
 
-const QuoteForm = ({ onClose }: { onClose: () => void }) => {
+const QuoteForm = ({ onClose, type }: FormProps) => {
   const { formData, errors, handleChange, handleSelectChange, validateForm } = useFormValidation({
     email: '',
     phone: '',
@@ -408,14 +453,43 @@ const QuoteForm = ({ onClose }: { onClose: () => void }) => {
     success: false
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoadingState({ isLoading: true, error: null, success: false });
-    logFormSubmission('quote', formData);
-    setLoadingState({ isLoading: false, error: null, success: true });
-    setTimeout(() => onClose(), 2000);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xpwdlbrq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: getFormTitle(type),
+          email: formData.email,
+          phone: formData.phone,
+          projectTypes: formData.projectTypes?.map(p => p.label).join(', '),
+          budgetRange: formData.budgetRange,
+          additionalRequirements: formData.additionalRequirements,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime
+        }),
+      });
+
+      if (response.ok) {
+        setLoadingState({ isLoading: false, error: null, success: true });
+        setTimeout(onClose, 2000);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      setLoadingState({ 
+        isLoading: false, 
+        error: 'Failed to submit form. Please try again.', 
+        success: false 
+      });
+    }
   };
 
   return (
@@ -571,7 +645,7 @@ const challenges = [
   { value: 'other', label: 'Other' }
 ];
 
-const ConsultationForm = ({ onClose }: { onClose: () => void }) => {
+const ConsultationForm = ({ onClose, type }: FormProps) => {
   const { formData, errors, handleChange, handleSelectChange, validateForm } = useFormValidation({
     email: '',
     phone: '',
@@ -586,14 +660,42 @@ const ConsultationForm = ({ onClose }: { onClose: () => void }) => {
     success: false
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validateForm()) return;
 
     setLoadingState({ isLoading: true, error: null, success: false });
-    logFormSubmission('consultation', formData);
-    setLoadingState({ isLoading: false, error: null, success: true });
-    setTimeout(() => onClose(), 2000);
+
+    try {
+      const response = await fetch('https://formspree.io/f/xpwdlbrq', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          type: getFormTitle(type),
+          email: formData.email,
+          phone: formData.phone,
+          areasOfInterest: formData.areasOfInterest?.map(a => a.label).join(', '),
+          additionalRequirements: formData.additionalRequirements,
+          preferredDate: formData.preferredDate,
+          preferredTime: formData.preferredTime
+        }),
+      });
+
+      if (response.ok) {
+        setLoadingState({ isLoading: false, error: null, success: true });
+        setTimeout(onClose, 2000);
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      setLoadingState({ 
+        isLoading: false, 
+        error: 'Failed to submit form. Please try again.', 
+        success: false 
+      });
+    }
   };
 
   return (
@@ -874,25 +976,25 @@ export default function CallToActionSection() {
       <Modal
         isOpen={isDemoOpen}
         onClose={() => setIsDemoOpen(false)}
-        title="Schedule a Demo"
+        title={getFormTitle('demo')}
       >
-        <DemoForm onClose={() => setIsDemoOpen(false)} />
+        <DemoForm onClose={() => setIsDemoOpen(false)} type="demo" />
       </Modal>
 
       <Modal
         isOpen={isQuoteOpen}
         onClose={() => setIsQuoteOpen(false)}
-        title="Request a Quote"
+        title={getFormTitle('quote')}
       >
-        <QuoteForm onClose={() => setIsQuoteOpen(false)} />
+        <QuoteForm onClose={() => setIsQuoteOpen(false)} type="quote" />
       </Modal>
 
       <Modal
         isOpen={isConsultationOpen}
         onClose={() => setIsConsultationOpen(false)}
-        title="Book a Consultation"
+        title={getFormTitle('consultation')}
       >
-        <ConsultationForm onClose={() => setIsConsultationOpen(false)} />
+        <ConsultationForm onClose={() => setIsConsultationOpen(false)} type="consultation" />
       </Modal>
     </div>
   );
