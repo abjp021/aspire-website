@@ -135,28 +135,29 @@ export default function ClientSection() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="flex items-start space-x-4 mb-4"
+          className="flex items-center mb-4"
         >
           <motion.div 
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ delay: 0.2 }}
-            className="relative w-16 h-16 flex-shrink-0"
+            className="relative w-24 h-24 flex-shrink-0 mr-4"
           >
             <Image
               src={client.logo}
               alt={client.name}
-              width={160}
-              height={160}
-              className="object-contain w-40 h-40"
+              width={96}
+              height={96}
+              className="object-contain w-24 h-24"
             />
           </motion.div>
           <motion.div
-            initial={{ opacity: 0, x: -10 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
+            className="text-left"
           >
-            <h3 className="text-xl font-bold text-gray-900">{client.name}</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-1">{client.name}</h3>
             <p className="text-gray-600">{client.summary}</p>
           </motion.div>
         </motion.div>
