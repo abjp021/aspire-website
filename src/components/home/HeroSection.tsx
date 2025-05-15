@@ -33,7 +33,12 @@ export default function HeroSection() {
           className="bg-white/10 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20"
         >
           <div className="flex items-center space-x-3">
-            <div className="text-2xl">🏆</div>
+            <div className="text-2xl">
+              {/* Star SVG - modern, bold, colorful, reduced size */}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="#facc15" stroke="#f59e42" strokeWidth="2" strokeLinejoin="round"/>
+              </svg>
+            </div>
             <div>
               <div className="text-white font-medium">ISO 9001:2015</div>
               <div className="text-white/80 text-sm">Quality Management</div>
@@ -48,7 +53,14 @@ export default function HeroSection() {
           className="bg-white/10 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20"
         >
           <div className="flex items-center space-x-3">
-            <div className="text-2xl">🔒</div>
+            <div className="text-2xl">
+              {/* Lock SVG - improved, modern, sharp */}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <rect x="5" y="10" width="14" height="9" rx="2" fill="#2563eb" stroke="#1e40af" strokeWidth="2"/>
+                <path d="M8 10V8a4 4 0 1 1 8 0v2" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+                <circle cx="12" cy="15" r="1.5" fill="#fff"/>
+              </svg>
+            </div>
             <div>
               <div className="text-white font-medium">ISO 27001:2013</div>
               <div className="text-white/80 text-sm">Information Security</div>
@@ -63,7 +75,12 @@ export default function HeroSection() {
           className="bg-white/10 backdrop-blur-sm rounded-xl p-4 shadow-lg border border-white/20"
         >
           <div className="flex items-center space-x-3">
-            <div className="text-2xl">⚡</div>
+            <div className="text-2xl">
+              {/* Lightning SVG - improved, modern, sharp */}
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+                <polygon points="13 2 5 14 12 14 11 22 19 10 13 10 13 2" fill="#facc15" stroke="#b45309" strokeWidth="2" strokeLinejoin="round"/>
+              </svg>
+            </div>
             <div>
               <div className="text-white font-medium">ISO 20000-1:2018</div>
               <div className="text-white/80 text-sm">IT Service Management</div>

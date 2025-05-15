@@ -964,9 +964,9 @@ export default function CallToActionSection() {
             <HiArrowLongRight className="ml-1 w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
           </a>
           <p className="text-white/70 text-sm mt-4">
-            Need immediate assistance? Call us at <span className="font-semibold text-white">1-800-ASPIRE</span> or email{' '}
-            <a href="mailto:contact@aspiretechno.com" className="text-white underline hover:text-white/90">
-              contact@aspiretechno.com
+            Need immediate assistance? Call us at <span className="font-semibold text-white">+91 26535 16805</span> or email{' '}
+            <a href="mailto:sales@aspiretechno.co.in" className="text-white underline hover:text-white/90">
+            sales@aspiretechno.co.in
             </a>
           </p>
         </motion.div>
