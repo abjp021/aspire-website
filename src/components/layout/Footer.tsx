@@ -47,9 +47,9 @@ export default function Footer() {
   return (
     <footer className="relative bg-white text-primary-900 pt-0" aria-labelledby="footer-heading">
       <div className="mx-auto max-w-7xl px-6 pt-6 pb-4 relative z-50">
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-center">
           {/* Brand Section */}
-          <div className="space-y-4">
+          <div className="flex flex-col h-full justify-center space-y-4 col-span-1">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.webp"
@@ -79,82 +79,87 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Navigation Sections */}
-          <div className="mt-16 grid grid-cols-2 gap-8 xl:col-span-2 xl:mt-0">
-            <div>
-              <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Solutions</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
-                {navigation.solutions.map((item) => (
-                  <motion.div key={item.name}
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
+          {/* Solutions Section */}
+          <div className="flex flex-col h-full justify-center col-span-1">
+            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Solutions</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
+              {navigation.solutions.map((item) => (
+                <motion.div key={item.name}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="block text-xs leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline py-0.5"
                   >
-                    <Link
-                      href={item.href}
-                      className="block text-xs leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline py-0.5"
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.div>
-                ))}
-              </div>
+                    {item.name}
+                  </Link>
+                </motion.div>
+              ))}
             </div>
-            <div>
-              <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Company</h3>
-              <ul role="list" className="mt-2 space-y-2">
-                {navigation.company.map((item) => (
-                  <motion.li key={item.name}
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
+          </div>
+
+          {/* Company Section */}
+          {/* <div className="flex flex-col h-full justify-center col-span-1">
+            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Company</h3>
+            <ul role="list" className="mt-2 space-y-2">
+              {navigation.company.map((item) => (
+                <motion.li key={item.name}
+                  whileHover={{ x: 5 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-sm leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline"
                   >
-                    <Link
-                      href={item.href}
-                      className="text-sm leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline"
-                    >
-                      {item.name}
-                    </Link>
-                  </motion.li>
-                ))}
-              </ul>
+                    {item.name}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
+          </div> */}
+
+          {/* Company Details Section on the right */}
+          <div className="flex flex-col h-full justify-center text-sm text-primary-800 col-span-1 xl:text-right">
+            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Support</h3>
+            <div className="space-y-1 mt-2">
+              <div>
+                <span className="font-semibold">Address:</span> SF 25-26 Aristo Aura, TP-2 Bhayli <br/>
+                Vadodara, Gujarat India 391410
+              </div>
+              <div>
+                <span className="font-semibold">Email:</span>
+                <a href="mailto:sales@aspiretechno.co.in" className="underline hover:text-primary-600"> sales@aspiretechno.co.in</a>
+              </div>
+              <div>
+                <span className="font-semibold">Phone:</span>
+                <a href="tel:+91 26535 16805" className="underline hover:text-primary-600"> +91 26535 16805</a>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* Blue & White Waves SVG Divider at Footer Bottom - Darker and Subtle White, with copyright inside SVG */}
-      <div className="relative w-full overflow-hidden leading-none pointer-events-none z-30" style={{height: '6rem'}}>
-        <svg viewBox="0 0 1600 150" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-36 absolute left-0 bottom-0" preserveAspectRatio="none">
+      {/* Responsive Blue Waves SVG Footer Background */}
+      <div className="w-full overflow-hidden leading-none pointer-events-none" style={{height: '10rem'}}>
+        <svg
+          viewBox="0 0 1600 160"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          className="w-full h-full"
+          style={{ display: 'block', width: '100vw', height: '100%' }}
+        >
           <defs>
-            <linearGradient id="footerWaveWhite" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fff" stopOpacity="0.7" />
-              <stop offset="100%" stopColor="#fff" stopOpacity="0.3" />
-            </linearGradient>
-            <linearGradient id="footerWaveBlueMid" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#fff" stopOpacity="0.5" />
-              <stop offset="100%" stopColor="#1976d2" stopOpacity="0.5" />
-            </linearGradient>
-            <linearGradient id="footerWaveBlueDark" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#174ea6" stopOpacity="0.85" />
-              <stop offset="100%" stopColor="#0a2a5c" stopOpacity="0.9" />
+            <linearGradient id="footerWave" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#1e3a8a" stopOpacity="1"/>
+              <stop offset="100%" stopColor="#1e3a8a" stopOpacity="1"/>
             </linearGradient>
           </defs>
-          {/* Deepest dark blue wave, most background - more curvy */}
-          <path d="M0 0 C300 60 600 0 900 60 C1200 120 1400 20 1600 60 V150 H0 V0 Z" fill="url(#footerWaveBlueDark)" />
-          {/* Middle blue wave with white blend */}
-          <path d="M0 30 C400 120 700 20 1100 100 C1300 140 1500 40 1600 90 V150 H0 V30 Z" fill="url(#footerWaveBlueMid)" />
-          {/* Top subtle white wave - more curvy */}
-          <path d="M0 70 C350 140 800 40 1300 130 C1450 150 1600 80 1600 120 V150 H0 V70 Z" fill="url(#footerWaveWhite)" />
-          {/* Copyright and links inside SVG for perfect visibility */}
-          <foreignObject x="0" y="100" width="1600" height="50">
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
-              <p style={{ color: '#fff', textAlign: 'center', fontSize: '1rem', fontWeight: 500, textShadow: '0 1px 4px #0a2a5c', margin: 0, letterSpacing: '0.01em' }}>
-                &copy; {new Date().getFullYear()} Aspiretechno Global. All rights reserved.
-              </p>
-              <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', marginTop: '0.5rem' }}>
-                <a href="/privacy" style={{ color: '#fff', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 5, fontSize: '1rem', textShadow: '0 1px 4px #0a2a5c', transition: 'text-decoration-color 0.2s', textDecorationColor: 'rgba(255,255,255,0.5)' }} onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.textDecorationColor = '#fff'} onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.textDecorationColor = 'rgba(255,255,255,0.5)'}>Privacy Policy</a>
-                <a href="/terms" style={{ color: '#fff', fontWeight: 600, textDecoration: 'underline', textUnderlineOffset: 5, fontSize: '1rem', textShadow: '0 1px 4px #0a2a5c', transition: 'text-decoration-color 0.2s', textDecorationColor: 'rgba(255,255,255,0.5)' }} onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.textDecorationColor = '#fff'} onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => e.currentTarget.style.textDecorationColor = 'rgba(255,255,255,0.5)'}>Terms of Service</a>
-              </div>
-            </div>
-          </foreignObject>
+          <path d="M0 120 Q400 160 800 120 T1600 120 V160 H0 Z" fill="url(#footerWave)"/>
+          <path d="M0 100 Q400 140 800 100 T1600 100 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.9"/>
+          <path d="M0 80 Q400 120 800 80 T1600 80 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.8"/>
+          <path d="M0 60 Q400 100 800 60 T1600 60 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.7"/>
+          <path d="M0 40 Q400 80 800 40 T1600 40 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.6"/>
         </svg>
       </div>
     </footer>

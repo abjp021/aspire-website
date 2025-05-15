@@ -5,8 +5,8 @@ import Image from 'next/image';
 export default function AboutSection() {
   return (
     <div className="py-20 bg-gradient-to-b from-white to-gray-50">
-      <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row items-center gap-10">
-        <div className="flex-1">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-stretch gap-10">
+        <div className="flex-[6_1_0%] min-w-0">
           <h2 className="text-4xl font-extrabold text-primary-600 mb-4">About Aspiretechno Global</h2>
           <p className="text-lg text-gray-700 mb-6">
             Aspiretechno Global is a leading provider of innovative IT solutions, empowering organizations to thrive in the digital era. With a passion for technology and a commitment to excellence, we deliver tailored services in networking, cybersecurity, cloud, and IT infrastructure.
@@ -29,7 +29,7 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-        <div className="flex-1 flex justify-center">
+        <div className="flex-1 flex justify-center flex-[4_1_0%] min-w-0">
           <Image
             src="/images/about.jpg"
             alt="About Aspiretechno Global"

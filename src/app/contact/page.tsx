@@ -175,8 +175,9 @@ export default function Contact() {
                         <div className="flex-1">
                           <h4 className="text-base font-semibold text-gray-900 mb-1">Visit Our Office</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            123 Tech Park, Innovation Street<br />
-                            Bangalore, Karnataka 560103
+                          SF 25-26 Aristo Aura, OPP Shanghani Skyz, <br />
+                          Priya Cinema to Navrachana Uni.Road,<br />
+                          TP-2 Bhayli, Vadodara, Gujarat India 391410
                           </p>
                         </div>
                       </div>
@@ -190,8 +191,8 @@ export default function Contact() {
                         <div className="flex-1">
                           <h4 className="text-base font-semibold text-gray-900 mb-1">Call Us</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            <a href="tel:+918012345678" className="hover:text-primary-600 transition-colors">+91 80 1234 5678</a><br />
-                            <a href="tel:+919876543210" className="hover:text-primary-600 transition-colors">+91 98765 43210</a>
+                            <a href="tel:+918012345678" className="hover:text-primary-600 transition-colors">+91 26535 16805</a><br />
+                            {/* <a href="tel:+919876543210" className="hover:text-primary-600 transition-colors">+91 98765 43210</a> */}
                           </p>
                         </div>
                       </div>
@@ -205,8 +206,8 @@ export default function Contact() {
                         <div className="flex-1">
                           <h4 className="text-base font-semibold text-gray-900 mb-1">Email Us</h4>
                           <p className="text-sm text-gray-600 leading-relaxed">
-                            <a href="mailto:contact@aspiretechno.com" className="hover:text-primary-600 transition-colors">contact@aspiretechno.com</a><br />
-                            <a href="mailto:support@aspiretechno.com" className="hover:text-primary-600 transition-colors">support@aspiretechno.com</a>
+                            <a href="mailto:contact@aspiretechno.com" className="hover:text-primary-600 transition-colors">sales@aspiretechno.co.in</a><br />
+                            {/* <a href="mailto:support@aspiretechno.com" className="hover:text-primary-600 transition-colors">support@aspiretechno.com</a> */}
                           </p>
                         </div>
                       </div>

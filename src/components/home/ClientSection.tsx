@@ -17,42 +17,42 @@ interface ClientInfo {
 const clientData: ClientInfo[] = [
   {
     id: 1,
-    logo: '/images/L1.jpeg',
+    logo: '/images/L1.png',
     name: 'TechCorp Solutions',
     summary: 'Leading software development company',
     workDone: 'Implemented comprehensive IT infrastructure upgrade, including cloud migration and security enhancement. Reduced operational costs by 30% and improved system efficiency.',
   },
   {
     id: 2,
-    logo: '/images/L2.jpeg',
+    logo: '/images/L2.png',
     name: 'InnovateX',
     summary: 'Innovation-driven technology firm',
     workDone: 'Deployed advanced cybersecurity solutions and established 24/7 monitoring system. Enhanced data protection and prevented potential security breaches.',
   },
   {
     id: 3,
-    logo: '/images/L3.jpeg',
+    logo: '/images/L3.png',
     name: 'InnovateX',
     summary: 'Innovation-driven technology firm',
     workDone: 'Deployed advanced cybersecurity solutions and established 24/7 monitoring system. Enhanced data protection and prevented potential security breaches.',
   },
   {
     id: 4,
-    logo: '/images/L4.jpeg',
+    logo: '/images/L4.png',
     name: 'InnovateX',
     summary: 'Innovation-driven technology firm',
     workDone: 'Deployed advanced cybersecurity solutions and established 24/7 monitoring system. Enhanced data protection and prevented potential security breaches.',
   },
   {
     id: 5,
-    logo: '/images/L5.jpeg',
+    logo: '/images/L5.png',
     name: 'InnovateX',
     summary: 'Innovation-driven technology firm',
     workDone: 'Deployed advanced cybersecurity solutions and established 24/7 monitoring system. Enhanced data protection and prevented potential security breaches.',
   },
   {
     id: 6,
-    logo: '/images/L6.jpeg',
+    logo: '/images/L6.png',
     name: 'InnovateX',
     summary: 'Innovation-driven technology firm',
     workDone: 'Implemented comprehensive network infrastructure and cloud solutions, improving system reliability and performance.',
@@ -66,11 +66,11 @@ export default function ClientSection() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const clientLogos = [
-    '/images/L1.jpeg',
-    '/images/L2.jpeg',
-    '/images/L3.jpeg',
-    '/images/L4.jpeg',
-    '/images/L5.jpeg',
+    '/images/L1.png',
+    '/images/L2.png',
+    '/images/L3.png',
+    '/images/L4.png',
+    '/images/L5.png',
     '/images/L6.jpeg',
     '/images/L7.jpeg',
     '/images/L8.jpeg',
@@ -146,8 +146,9 @@ export default function ClientSection() {
             <Image
               src={client.logo}
               alt={client.name}
-              fill
-              className="object-contain"
+              width={160}
+              height={160}
+              className="object-contain w-40 h-40"
             />
           </motion.div>
           <motion.div
@@ -226,15 +227,13 @@ export default function ClientSection() {
                     onClick={() => setSelectedClient(client)}
                     className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
                   >
-                    <div className="relative w-full h-full">
+                    <div className="flex items-center justify-center w-40 h-40 bg-white rounded-2xl shadow-soft-lg border border-gray-100">
                       <Image
                         src={client.logo}
                         alt={client.name}
-                        fill
-                        className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        priority={idx < 4}
-                        loading={idx < 4 ? 'eager' : 'lazy'}
+                        width={160}
+                        height={160}
+                        className="object-contain w-40 h-40"
                       />
                     </div>
                   </div>
@@ -253,14 +252,13 @@ export default function ClientSection() {
                     onClick={() => setSelectedClient(client)}
                     className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
                   >
-                    <div className="relative w-full h-full">
+                    <div className="flex items-center justify-center w-40 h-40 bg-white rounded-2xl shadow-soft-lg border border-gray-100">
                       <Image
                         src={client.logo}
                         alt={client.name}
-                        fill
-                        className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        loading="lazy"
+                        width={160}
+                        height={160}
+                        className="object-contain w-40 h-40"
                       />
                     </div>
                   </div>
@@ -279,14 +277,13 @@ export default function ClientSection() {
                     onClick={() => setSelectedClient(client)}
                     className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
                   >
-                    <div className="relative w-full h-full">
+                    <div className="flex items-center justify-center w-40 h-40 bg-white rounded-2xl shadow-soft-lg border border-gray-100">
                       <Image
                         src={client.logo}
                         alt={client.name}
-                        fill
-                        className="object-contain p-2 transition-transform duration-300 group-hover:scale-105"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        loading="lazy"
+                        width={160}
+                        height={160}
+                        className="object-contain w-40 h-40"
                       />
                     </div>
                   </div>
