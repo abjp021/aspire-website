@@ -376,7 +376,7 @@ export default function ClientSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+          transition={{ duration: 0.5 }}
           className="text-center mb-12"
         >
           <h2 className="text-4xl font-bold text-dark-500 mb-4">Trusted by Industry Leaders</h2>
@@ -405,7 +405,7 @@ export default function ClientSection() {
                   key={idx}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: idx * 0.5 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative"
                 >
                   <div 
@@ -430,7 +430,7 @@ export default function ClientSection() {
                   key={`second-${idx}`}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: idx * 0.5 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative"
                 >
                   <div 
@@ -455,7 +455,7 @@ export default function ClientSection() {
                   key={`third-${idx}`}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 1, delay: idx * 0.5 }}
+                  transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="group relative"
                 >
                   <div 
@@ -502,7 +502,7 @@ export default function ClientSection() {
 
         .scroll-content {
           display: flex;
-          animation: scroll 30s linear infinite;
+          animation: scroll 60s linear infinite;
           width: fit-content;
         }
 
