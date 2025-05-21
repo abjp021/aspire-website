@@ -77,18 +77,22 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="py-20 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 relative overflow-hidden">
+      <div className="relative overflow-hidden bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700 pb-16">
+        <div className="absolute inset-0 bg-network-mesh opacity-10"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-to-bl from-secondary-500 to-transparent opacity-30 rounded-bl-full"></div>
+        <div className="absolute bottom-0 left-0 w-1/4 h-1/4 bg-gradient-to-tr from-accent-500 to-transparent opacity-30 rounded-tr-full"></div>
+        <div className="absolute inset-0 bg-glow-primary"></div>
         <div className="max-w-7xl mx-auto px-4 relative">
-          <div className="text-center mb-16">
+          <div className="text-center py-20">
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
               Let's Build Something Amazing Together
             </h2>
-            <p className="text-white/90 text-xl mb-4 max-w-3xl mx-auto">
+            <p className="text-white/90 text-xl mb-8 max-w-3xl mx-auto">
               Whether you need a custom solution or want to explore our services, we're here to help transform your ideas into reality.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto -mt-12">
             {[
               {
                 icon: HiOutlineLightBulb,
