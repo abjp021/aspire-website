@@ -229,47 +229,10 @@ const clientData: ClientInfo[] = [
 ];
 
 export default function ClientSection() {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false);
   const [selectedClient, setSelectedClient] = useState<ClientInfo | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
 
-  const clientLogos = [
-    '/images/logos/aaradhya.png',
-     '/images/logos/aluplast.png',
-     '/images/logos/arm_war_college.png',
-     '/images/logos/Aura_Lifecare.png',
-     '/images/logos/bhilosa.png',
-     '/images/logos/birla.png',
-     '/images/logos/BITS_Pilani.png',
-     '/images/logos/checkmate.png',
-     '/images/logos/falcon.png',
-     '/images/logos/GACL.png',
-     '/images/logos/galpha.png',
-     '/images/logos/GTU.png',
-     '/images/logos/HE.png',
-     '/images/logos/IAF.png',
-     '/images/logos/kpgu.png',
-     '/images/logos/Ld.png',
-     '/images/logos/marsh.png',
-     '/images/logos/mayr.png',
-     '/images/logos/MCTE_MHOW.png',
-     '/images/logos/navine flourine.png',
-     '/images/logos/ntpc.png',
-     '/images/logos/panchmahal.png',
-     '/images/logos/rusan.png',
-     '/images/logos/sify.png',
-     '/images/logos/talbros.png',
-     '/images/logos/TBEA.png',
-     '/images/logos/VB.png',
-     '/images/logos/widar.png',
-     '/images/logos/wuling.png'
-  ];
-
-  useEffect(() => {
-    setIsLoaded(true);
-  }, []);
-
+  // Modal component
   const Modal = ({ client, onClose }: { client: ClientInfo; onClose: () => void }) => (
     <motion.div
       initial={{ opacity: 0 }}
@@ -281,52 +244,20 @@ export default function ClientSection() {
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0, y: 20 }}
-        animate={{ 
-          scale: 1, 
-          opacity: 1, 
-          y: 0,
-          transition: {
-            type: "spring",
-            stiffness: 300,
-            damping: 25
-          }
-        }}
-        exit={{ 
-          scale: 0.95, 
-          opacity: 0, 
-          y: 20,
-          transition: {
-            duration: 0.2
-          }
-        }}
+        animate={{ scale: 1, opacity: 1, y: 0 }}
+        exit={{ scale: 0.95, opacity: 0, y: 20 }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
         className="bg-white rounded-2xl p-6 max-w-lg w-full shadow-2xl relative"
-        onClick={(e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation()}
+        onClick={e => e.stopPropagation()}
       >
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.8 }}
-          transition={{ delay: 0.2 }}
+        <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
         >
           <IoClose size={24} />
-        </motion.button>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="flex items-center mb-4"
-        >
-          <motion.div 
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="relative w-24 h-24 flex-shrink-0 mr-4"
-          >
+        </button>
+        <div className="flex flex-row items-center gap-6 mb-4">
+          <div className="flex items-center w-24 h-24 bg-white">
             <Image
               src={client.logo}
               alt={client.name}
@@ -334,198 +265,86 @@ export default function ClientSection() {
               height={96}
               className="object-contain w-24 h-24"
             />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-left"
-          >
+          </div>
+          <div className="flex flex-col justify-center text-left">
             <h3 className="text-2xl font-bold text-gray-900 mb-1">{client.name}</h3>
             <p className="text-gray-600">{client.summary}</p>
-          </motion.div>
-        </motion.div>
-        
-        <motion.div 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="mt-4"
-        >
+          </div>
+        </div>
+        <div className="mt-4">
           <h4 className="text-lg font-semibold text-gray-900 mb-2">Our Work Together</h4>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-gray-700 leading-relaxed"
-          >
-            {client.workDone}
-          </motion.p>
-        </motion.div>
+          <p className="text-gray-700 leading-relaxed">{client.workDone}</p>
+        </div>
       </motion.div>
     </motion.div>
   );
 
   return (
-    <div className="py-20 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-500 via-secondary-500 to-accent-500"></div>
-      
-      <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-4xl font-bold text-dark-500 mb-4">Trusted by Industry Leaders</h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We're proud to partner with innovative companies across various sectors, delivering excellence in every project.
+    <div className="py-12 bg-white relative">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center md:items-start gap-8">
+        {/* Left: Heading/Subheading */}
+        <div className="w-full md:w-1/3 flex-shrink-0 mb-6 md:mb-0">
+          <h2 className="text-xl font-semibold text-gray-700 mb-2 text-left">
+            Helping <span className="font-bold text-gray-900">industry leaders</span> like these get more from their technology.
+          </h2>
+          <p className="text-gray-500 text-left text-base max-w-xs">
+            We're proud to partner with innovative companies across various sectors.
           </p>
-        </motion.div>
-
-        <div 
-          ref={containerRef}
-          className="relative overflow-hidden"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-        >
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10"></div>
-
-          <div className="infinite-scroll-container">
-            <div 
-              className={`scroll-content flex space-x-8 ${isHovered ? 'paused' : ''}`}
-            >
-              {/* First set */}
-              {clientData.map((client, idx) => (
+        </div>
+        {/* Right: Infinite Scroll Logos */}
+        <div className="w-full md:flex-1 overflow-hidden relative">
+          <div className="marquee-container">
+            <div className={`marquee-track${isHovered ? ' paused' : ''}`}>
+              {clientData.concat(clientData).map((client, idx) => (
                 <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative"
+                  key={client.id + '-' + idx}
+                  whileHover={{ scale: 1.12, boxShadow: '0 4px 32px 0 rgba(80,120,255,0.10)' }}
+                  className="flex items-center justify-center mx-10 cursor-pointer transition-transform"
+                  onClick={() => setSelectedClient(client)}
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => setIsHovered(false)}
                 >
-                  <div 
-                    onClick={() => setSelectedClient(client)}
-                    className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
-                  >
-                    <div className="flex items-center justify-center w-40 h-40 bg-white rounded-2xl shadow-soft-lg border border-gray-100">
-                      <Image
-                        src={client.logo}
-                        alt={client.name}
-                        width={160}
-                        height={160}
-                        className="object-contain w-40 h-40"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-              {/* Second set */}
-              {clientData.map((client, idx) => (
-                <motion.div
-                  key={`second-${idx}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative"
-                >
-                  <div 
-                    onClick={() => setSelectedClient(client)}
-                    className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
-                  >
-                    <div className="flex items-center justify-center w-40 h-40 bg-white rounded-2xl shadow-soft-lg border border-gray-100">
-                      <Image
-                        src={client.logo}
-                        alt={client.name}
-                        width={160}
-                        height={160}
-                        className="object-contain w-40 h-40"
-                      />
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-              {/* Third set for seamless loop */}
-              {clientData.map((client, idx) => (
-                <motion.div
-                  key={`third-${idx}`}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="group relative"
-                >
-                  <div 
-                    onClick={() => setSelectedClient(client)}
-                    className="flex-shrink-0 w-64 h-40 flex items-center justify-center bg-white rounded-2xl shadow-soft-lg p-6 border border-gray-100 hover:border-primary-200 transition-all duration-300 hover:shadow-glow-primary relative cursor-pointer"
-                  >
-                    <div className="flex items-center justify-center w-40 h-40 bg-white rounded-2xl shadow-soft-lg border border-gray-100">
-                      <Image
-                        src={client.logo}
-                        alt={client.name}
-                        width={160}
-                        height={160}
-                        className="object-contain w-40 h-40"
-                      />
-                    </div>
-                  </div>
+                  <Image
+                    src={client.logo}
+                    alt={client.name}
+                    width={180}
+                    height={90}
+                    className="object-contain h-24 w-auto"
+                  />
                 </motion.div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Loading State */}
-        {!isLoaded && (
-          <div className="flex justify-center items-center h-32">
-            <div className="animate-pulse w-48 h-32 bg-white/20 rounded-2xl"></div>
-          </div>
-        )}
-
-        {/* Modal */}
-        <AnimatePresence>
-          {selectedClient && (
-            <Modal client={selectedClient} onClose={() => setSelectedClient(null)} />
-          )}
-        </AnimatePresence>
       </div>
-
+      <AnimatePresence>
+        {selectedClient && (
+          <Modal client={selectedClient} onClose={() => setSelectedClient(null)} />
+        )}
+      </AnimatePresence>
       <style jsx>{`
-        .infinite-scroll-container {
+        .marquee-container {
           width: 100%;
           overflow: hidden;
           position: relative;
         }
-
-        .scroll-content {
+        .marquee-track {
           display: flex;
-          animation: scroll 60s linear infinite;
-          width: fit-content;
+          align-items: center;
+          animation: marquee 40s linear infinite;
+          width: max-content;
+          transition: animation-play-state 0.3s;
         }
-
-        .scroll-content.paused {
+        .marquee-track.paused {
           animation-play-state: paused;
-          transition: transform 0.3s ease-out;
         }
-
-        @keyframes scroll {
+        @keyframes marquee {
           0% {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(-33.333%);
+            transform: translateX(-50%);
           }
-        }
-
-        .scroll-content:hover {
-          transition: transform 0.3s ease-out;
-        }
-
-        .scroll-content:not(.paused) {
-          transition: transform 0.3s ease-in;
         }
       `}</style>
     </div>
