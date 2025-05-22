@@ -58,13 +58,92 @@ const caseStudyData = {
         }
       ]
     }
+  },
+  'cloud-migration-fintrust': {
+    title: "Cloud Migration for Financial Services",
+    client: "FinTrust Bank",
+    industry: "Financial Services",
+    duration: "4 Months",
+    heroImage: "/images/case-studies/fintrust-hero.jpg",
+    problemImage: "/images/case-studies/fintrust-problem.jpg",
+    solutionImage: "/images/case-studies/fintrust-solution.jpg",
+    impactImage: "/images/case-studies/fintrust-impact.jpg",
+    problem: {
+      title: "The Challenge",
+      description: "FinTrust Bank's legacy on-premise infrastructure was causing frequent downtimes, high maintenance costs, and security/compliance challenges. The bank also struggled to scale for new digital services.",
+      challenges: [
+        "Frequent downtimes impacting customer experience",
+        "High maintenance and operational costs",
+        "Security and compliance risks",
+        "Limited scalability for digital services"
+      ]
+    },
+    solution: {
+      title: "Our Solution",
+      description: "We designed and executed a secure, compliant cloud migration for all core banking systems, ensuring zero data loss and minimal disruption.",
+      steps: [
+        "Assessed and mapped all critical banking applications",
+        "Designed a secure, compliant cloud architecture",
+        "Migrated data and applications with zero data loss",
+        "Trained staff on new cloud workflows"
+      ]
+    },
+    impact: {
+      title: "The Impact",
+      description: "The migration resulted in a 25% reduction in operational costs, 99.99% uptime, enhanced security/compliance, and faster rollout of new digital services.",
+      metrics: [
+        { label: "Cost Savings", value: "25%" },
+        { label: "Uptime", value: "99.99%" },
+        { label: "Security Incidents", value: "0" },
+        { label: "Time to Launch New Services", value: "-40%" }
+      ]
+    }
+  },
+  'ai-customer-support-retailx': {
+    title: "AI-Powered Customer Support Automation",
+    client: "RetailX",
+    industry: "Retail & E-commerce",
+    duration: "3 Months",
+    heroImage: "/images/case-studies/retailx-hero.jpg",
+    problemImage: "/images/case-studies/retailx-problem.jpeg",
+    solutionImage: "/images/case-studies/retailx-solution.png",
+    impactImage: "/images/case-studies/retailx-impact.png",
+    problem: {
+      title: "The Challenge",
+      description: "RetailX faced a high volume of repetitive customer queries, slow response times, and difficulty scaling support during peak sales periods.",
+      challenges: [
+        "Overwhelmed support staff with repetitive queries",
+        "Slow response times and inconsistent support quality",
+        "Difficulty scaling support during peak events"
+      ]
+    },
+    solution: {
+      title: "Our Solution",
+      description: "We implemented an AI-powered chatbot and support automation platform, integrated with order tracking, returns, and FAQs, and provided escalation to human agents for complex issues.",
+      steps: [
+        "Deployed an AI chatbot for instant answers to common questions",
+        "Integrated with order tracking, returns, and FAQs",
+        "Enabled escalation to human agents for complex issues",
+        "Trained staff to manage and optimize the AI platform"
+      ]
+    },
+    impact: {
+      title: "The Impact",
+      description: "The automation reduced average response time by 80%, increased customer satisfaction to 95%, and reduced support team workload by 40%.",
+      metrics: [
+        { label: "Response Time Reduction", value: "80%" },
+        { label: "Customer Satisfaction", value: "95%" },
+        { label: "Support Workload Reduction", value: "40%" },
+        { label: "Peak Event Scalability", value: "Seamless" }
+      ]
+    }
   }
 };
 
 // This function tells Next.js which paths to pre-render at build time
 export function generateStaticParams() {
   return Object.keys(caseStudyData).map((slug) => ({
-    slug: slug,
+    slug,
   }));
 }
 

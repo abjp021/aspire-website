@@ -19,6 +19,32 @@ const caseStudies = [
       { label: "Performance", value: "200%" }
     ]
   },
+  {
+    slug: 'cloud-migration-fintrust',
+    title: "Cloud Migration for Financial Services",
+    client: "FinTrust Bank",
+    industry: "Financial Services",
+    duration: "4 Months",
+    thumbnail: "/images/case-studies/fintrust-hero.jpg",
+    excerpt: "A seamless migration of core banking systems to the cloud, improving uptime, security, and reducing operational costs by 25%.",
+    metrics: [
+      { label: "Cost Savings", value: "25%" },
+      { label: "Uptime", value: "99.99%" }
+    ]
+  },
+  {
+    slug: 'ai-customer-support-retailx',
+    title: "AI-Powered Customer Support Automation",
+    client: "RetailX",
+    industry: "Retail & E-commerce",
+    duration: "3 Months",
+    thumbnail: "/images/case-studies/retailx-hero.jpg",
+    excerpt: "Deployed an AI-driven chatbot and support automation platform, reducing response times by 80% and increasing customer satisfaction.",
+    metrics: [
+      { label: "Time Reduction", value: "80%" },
+      { label: "Customer Satisfaction", value: "95%" }
+    ]
+  },
   // Add more case studies here as they become available
 ];
 
@@ -58,16 +84,21 @@ export default function CaseStudiesPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300"
+              className="group relative bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full"
             >
-              <Link href={`/case-studies/${study.slug}`} className="block">
-                <div className="relative h-48 overflow-hidden rounded-t-2xl">
-                  <Image
-                    src={study.thumbnail}
-                    alt={study.title}
-                    fill
-                    className="object-cover transform group-hover:scale-105 transition-transform duration-500"
-                  />
+              <Link href={`/case-studies/${study.slug}`} className="block h-full">
+                {/* Image with fixed aspect ratio and fallback */}
+                <div className="relative aspect-[16/9] overflow-hidden rounded-t-2xl bg-gray-100">
+                  {study.thumbnail ? (
+                    <Image
+                      src={study.thumbnail}
+                      alt={study.title}
+                      fill
+                      className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-gray-300 text-3xl">No Image</div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <div className="flex flex-wrap gap-2">
@@ -80,14 +111,15 @@ export default function CaseStudiesPage() {
                     </div>
                   </div>
                 </div>
-                <div className="p-6">
+                {/* Card Body */}
+                <div className="flex flex-col flex-1 p-6 min-h-[220px]">
                   <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-secondary-500 transition-colors">
                     {study.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">
+                  <p className="text-gray-600 mb-4 line-clamp-2 flex-1">
                     {study.excerpt}
                   </p>
-                  <div className="flex flex-wrap gap-6 mt-4">
+                  <div className="flex flex-wrap gap-6 mt-auto">
                     {study.metrics.map((metric, idx) => (
                       <div key={idx} className="text-center min-w-[80px]">
                         <div className="text-lg font-bold text-primary-600">
