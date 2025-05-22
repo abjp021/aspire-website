@@ -331,9 +331,10 @@ export default function ClientSection() {
         .marquee-track {
           display: flex;
           align-items: center;
-          animation: marquee 40s linear infinite;
+          animation: marquee 60s linear infinite;
           width: max-content;
           transition: animation-play-state 0.3s;
+          will-change: transform;
         }
         .marquee-track.paused {
           animation-play-state: paused;
