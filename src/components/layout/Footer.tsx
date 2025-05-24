@@ -151,8 +151,8 @@ export default function Footer() {
         >
           <defs>
             <linearGradient id="footerWave" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#1e3a8a" stopOpacity="1"/>
-              <stop offset="100%" stopColor="#1e3a8a" stopOpacity="1"/>
+              <stop offset="0%" stopColor="#15315B" stopOpacity="1"/>
+              <stop offset="100%" stopColor="#15315B" stopOpacity="1"/>
             </linearGradient>
           </defs>
           <path d="M0 120 Q400 160 800 120 T1600 120 V160 H0 Z" fill="url(#footerWave)"/>
@@ -161,6 +161,10 @@ export default function Footer() {
           <path d="M0 60 Q400 100 800 60 T1600 60 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.7"/>
           <path d="M0 40 Q400 80 800 40 T1600 40 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.6"/>
         </svg>
+      </div>
+      {/* Copyright Bar (overlay, does not increase footer height) */}
+      <div className="w-full bg-[#15315B] text-white text-center text-sm py-3 absolute left-0 bottom-0 z-50 pointer-events-none">
+      ©2025 Rudraksha Solutions. All Rights Reserved
       </div>
     </footer>
   );

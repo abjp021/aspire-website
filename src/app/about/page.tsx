@@ -115,7 +115,7 @@ const certifications = [
     pdfUrl: '/certificates/iso-9001.pdf' // Dummy PDF path
   },
   {
-    name: 'ISO 27001:2013',
+    name: 'ISO 27001:2022',
     description: 'Information Security Management',
     icon: HiOutlineLockClosed,
     details: 'Recognized for our robust information security management system',

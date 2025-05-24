@@ -62,7 +62,7 @@ export default function HeroSection() {
               </svg>
             </div>
             <div>
-              <div className="text-white font-medium">ISO 27001:2013</div>
+              <div className="text-white font-medium">ISO 27001:2022</div>
               <div className="text-white/80 text-sm">Information Security</div>
             </div>
           </div>

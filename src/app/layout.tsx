@@ -38,7 +38,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning className={`${openSans.variable} ${poppins.variable} ${montserrat.variable} scroll-smooth`}>
       <body className="antialiased bg-white">
         <div className="min-h-screen">
-          <Layout>{children}</Layout>
+        <Layout>{children}</Layout>
         </div>
       </body>
     </html>
