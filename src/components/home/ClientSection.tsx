@@ -300,7 +300,7 @@ export default function ClientSection() {
                   key={client.id + '-' + idx}
                   whileHover={{ scale: 1.12, boxShadow: '0 4px 32px 0 rgba(80,120,255,0.10)' }}
                   className="flex items-center justify-center mx-10 cursor-pointer transition-transform"
-                  onClick={() => setSelectedClient(client)}
+                  // onClick={() => setSelectedClient(client)}
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
                 >

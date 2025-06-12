@@ -12,7 +12,7 @@ const navigation: NavigationItem[] = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Services', href: '/services' },
-  { name: 'Case Studies', href: '/case-studies' },
+  // { name: 'Case Studies', href: '/case-studies' },
   { name: 'Contact', href: '/contact' },
 ];
 
@@ -57,7 +57,7 @@ export default function Header({ isDarkMode, toggleDarkMode }: HeaderProps) {
                     <div className="absolute inset-0 bg-secondary-500/20 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <img
                       className="h-12 w-auto relative"
-                      src="/logo.webp"
+                      src="/aspire-logo.png"
                       alt="Aspiretechno Global"
                     />
                   </motion.div>
