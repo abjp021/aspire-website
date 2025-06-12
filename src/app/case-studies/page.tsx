@@ -5,49 +5,50 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 // This would typically come from a CMS or database
-const caseStudies = [
-  {
-    slug: 'digital-transformation',
-    title: "Digital Transformation Journey",
-    client: "Aaradhya Associates",
-    industry: "Software Development",
-    duration: "6 Months",
-    thumbnail: "/images/case-studies/aaradhya-hero.jpg",
-    excerpt: "A comprehensive digital transformation that modernized IT infrastructure, reduced costs by 30%, and improved system performance by 200%.",
-    metrics: [
-      { label: "Cost Reduction", value: "30%" },
-      { label: "Performance", value: "200%" }
-    ]
-  },
-  {
-    slug: 'cloud-migration-fintrust',
-    title: "Cloud Migration for Financial Services",
-    client: "FinTrust Bank",
-    industry: "Financial Services",
-    duration: "4 Months",
-    thumbnail: "/images/case-studies/fintrust-hero.jpg",
-    excerpt: "A seamless migration of core banking systems to the cloud, improving uptime, security, and reducing operational costs by 25%.",
-    metrics: [
-      { label: "Cost Savings", value: "25%" },
-      { label: "Uptime", value: "99.99%" }
-    ]
-  },
-  {
-    slug: 'ai-customer-support-retailx',
-    title: "AI-Powered Customer Support Automation",
-    client: "RetailX",
-    industry: "Retail & E-commerce",
-    duration: "3 Months",
-    thumbnail: "/images/case-studies/retailx-hero.jpg",
-    excerpt: "Deployed an AI-driven chatbot and support automation platform, reducing response times by 80% and increasing customer satisfaction.",
-    metrics: [
-      { label: "Time Reduction", value: "80%" },
-      { label: "Customer Satisfaction", value: "95%" }
-    ]
-  },
-  // Add more case studies here as they become available
-];
+// const caseStudies = [
+//   {
+//     slug: 'digital-transformation',
+//     title: "Digital Transformation Journey",
+//     client: "Aaradhya Associates",
+//     industry: "Software Development",
+//     duration: "6 Months",
+//     thumbnail: "/images/case-studies/aaradhya-hero.jpg",
+//     excerpt: "A comprehensive digital transformation that modernized IT infrastructure, reduced costs by 30%, and improved system performance by 200%.",
+//     metrics: [
+//       { label: "Cost Reduction", value: "30%" },
+//       { label: "Performance", value: "200%" }
+//     ]
+//   },
+//   {
+//     slug: 'cloud-migration-fintrust',
+//     title: "Cloud Migration for Financial Services",
+//     client: "FinTrust Bank",
+//     industry: "Financial Services",
+//     duration: "4 Months",
+//     thumbnail: "/images/case-studies/fintrust-hero.jpg",
+//     excerpt: "A seamless migration of core banking systems to the cloud, improving uptime, security, and reducing operational costs by 25%.",
+//     metrics: [
+//       { label: "Cost Savings", value: "25%" },
+//       { label: "Uptime", value: "99.99%" }
+//     ]
+//   },
+//   {
+//     slug: 'ai-customer-support-retailx',
+//     title: "AI-Powered Customer Support Automation",
+//     client: "RetailX",
+//     industry: "Retail & E-commerce",
+//     duration: "3 Months",
+//     thumbnail: "/images/case-studies/retailx-hero.jpg",
+//     excerpt: "Deployed an AI-driven chatbot and support automation platform, reducing response times by 80% and increasing customer satisfaction.",
+//     metrics: [
+//       { label: "Time Reduction", value: "80%" },
+//       { label: "Customer Satisfaction", value: "95%" }
+//     ]
+//   }
+//   // Add more case studies here as they become available
+// ];
 
+const caseStudies: any[] = []
 export default function CaseStudiesPage() {
   return (
     <div className="min-h-screen bg-white">
@@ -120,7 +121,7 @@ export default function CaseStudiesPage() {
                     {study.excerpt}
                   </p>
                   <div className="flex flex-wrap gap-6 mt-auto">
-                    {study.metrics.map((metric, idx) => (
+                    {study.metrics.map((metric: any, idx: number) => (
                       <div key={idx} className="text-center min-w-[80px]">
                         <div className="text-lg font-bold text-primary-600">
                           {metric.value}
@@ -140,10 +141,10 @@ export default function CaseStudiesPage() {
         {/* Empty State */}
         {caseStudies.length === 0 && (
           <div className="text-center py-16">
-            <h3 className="text-xl font-medium text-white mb-2">
+            <h3 className="text-xl font-medium text-gray-800 mb-2">
               No case studies available yet
             </h3>
-            <p className="text-white/60">
+            <p className="text-gray-500">
               Check back soon for our success stories and client transformations.
             </p>
           </div>

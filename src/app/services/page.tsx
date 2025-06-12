@@ -160,39 +160,6 @@ export default function Services() {
         </div>
       </div>
 
-      {/* Testimonials Section */}
-      <div className="relative py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-primary-600 to-primary-400">
-            What Our Clients Say
-          </h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((testimonial) => (
-              <div
-                key={testimonial.author}
-                className="bg-white rounded-xl p-6 shadow-lg shadow-gray-100/50 hover:shadow-xl transition-shadow relative group"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-50/0 group-hover:from-primary-50/50 group-hover:to-transparent transition-all rounded-xl" />
-                <div className="relative">
-                  <p className="text-gray-600 text-sm mb-4">"{testimonial.quote}"</p>
-                  <div className="flex items-center">
-                    <img
-                      src={testimonial.image}
-                      alt={testimonial.author}
-                      className="w-10 h-10 rounded-full object-cover ring-2 ring-white"
-                    />
-                    <div className="ml-3">
-                      <div className="text-sm font-medium text-gray-900">{testimonial.author}</div>
-                      <div className="text-xs text-gray-600">{testimonial.role}</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* Contact Us Now Section */}
       <div className="relative py-20 bg-gradient-to-br from-primary-600 via-primary-500 to-primary-700">
         <div className="absolute inset-0 bg-network-mesh opacity-10"></div>

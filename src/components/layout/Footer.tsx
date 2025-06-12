@@ -47,12 +47,12 @@ export default function Footer() {
   return (
     <footer className="relative bg-white text-primary-900 pt-0" aria-labelledby="footer-heading">
       <div className="mx-auto max-w-7xl px-6 pt-6 pb-4 relative z-50">
-        <div className="grid grid-cols-1 xl:grid-cols-3 gap-4 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 items-start text-center xl:text-left">
           {/* Brand Section */}
-          <div className="flex flex-col h-full justify-center space-y-4 col-span-1">
+          <div className="flex flex-col h-full justify-center space-y-4">
             <Link href="/" className="flex items-center">
               <Image
-                src="/logo.webp"
+                src="/aspire-logo.png"
                 alt="Aspire Techno Global"
                 width={150}
                 height={40}
@@ -80,7 +80,7 @@ export default function Footer() {
           </div>
 
           {/* Solutions Section */}
-          <div className="flex flex-col h-full justify-center col-span-1">
+          <div className="flex flex-col h-full justify-center">
             <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Solutions</h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1 mt-2">
               {navigation.solutions.map((item) => (
@@ -99,30 +99,26 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Company Section */}
-          {/* <div className="flex flex-col h-full justify-center col-span-1">
-            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Company</h3>
-            <ul role="list" className="mt-2 space-y-2">
-              {navigation.company.map((item) => (
-                <motion.li key={item.name}
-                  whileHover={{ x: 5 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Link
-                    href={item.href}
-                    className="text-sm leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline"
-                  >
-                    {item.name}
-                  </Link>
-                </motion.li>
-              ))}
+          {/* Quick Links Section */}
+          <div className="flex flex-col h-full justify-center gap-2 items-center text-center">
+            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Quick Links</h3>
+            <ul className="space-y-1">
+              <li>
+                <Link href="/" className="text-sm leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline">Home</Link>
+              </li>
+              <li>
+                <Link href="/about" className="text-sm leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline">About</Link>
+              </li>
+              <li>
+                <Link href="/contact" className="text-sm leading-5 text-primary-700 hover:text-primary-900 transition-colors duration-200 underline-offset-4 hover:underline">Contact</Link>
+              </li>
             </ul>
-          </div> */}
+          </div>
 
           {/* Company Details Section on the right */}
-          <div className="flex flex-col h-full justify-center text-sm text-primary-800 col-span-1 xl:text-right">
-            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Support</h3>
-            <div className="space-y-1 mt-2">
+          <div className="flex flex-col h-full justify-center text-sm text-primary-800 xl:text-right gap-2">
+            <h3 className="text-base font-semibold leading-5 text-primary-900 mb-1">Get in Touch</h3>
+            <div className="space-y-1">
               <div>
                 <span className="font-semibold">Address:</span> SF 25-26 Aristo Aura, TP-2 Bhayli <br/>
                 Vadodara, Gujarat India 391410
@@ -139,32 +135,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      {/* Responsive Blue Waves SVG Footer Background */}
-      <div className="w-full overflow-hidden leading-none pointer-events-none" style={{height: '10rem'}}>
-        <svg
-          viewBox="0 0 1600 160"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          className="w-full h-full"
-          style={{ display: 'block', width: '100vw', height: '100%' }}
-        >
-          <defs>
-            <linearGradient id="footerWave" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#15315B" stopOpacity="1"/>
-              <stop offset="100%" stopColor="#15315B" stopOpacity="1"/>
-            </linearGradient>
-          </defs>
-          <path d="M0 120 Q400 160 800 120 T1600 120 V160 H0 Z" fill="url(#footerWave)"/>
-          <path d="M0 100 Q400 140 800 100 T1600 100 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.9"/>
-          <path d="M0 80 Q400 120 800 80 T1600 80 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.8"/>
-          <path d="M0 60 Q400 100 800 60 T1600 60 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.7"/>
-          <path d="M0 40 Q400 80 800 40 T1600 40 V160 H0 Z" fill="url(#footerWave)" fillOpacity="0.6"/>
-        </svg>
-      </div>
-      {/* Copyright Bar (overlay, does not increase footer height) */}
-      <div className="w-full bg-[#15315B] text-white text-center text-sm py-3 absolute left-0 bottom-0 z-50 pointer-events-none">
-      ©2025 Rudraksha Solutions. All Rights Reserved
+      <div className="w-full bg-[#15315B] text-white text-center text-sm py-3">
+        ©2025 Aspire Techno Global Pvt Ltd. All Rights Reserved
       </div>
     </footer>
   );

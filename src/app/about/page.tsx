@@ -66,27 +66,27 @@ const values = [
 
 const timeline = [
   {
-    year: '2015',
+    year: '2020',
     title: 'Our Beginning',
     description: 'Founded with a vision to transform IT infrastructure solutions'
   },
   {
-    year: '2017',
+    year: '2021',
     title: 'Expansion',
     description: 'Launched our first international operations'
   },
   {
-    year: '2019',
+    year: '2022',
     title: 'Innovation Hub',
     description: 'Established our research and development center'
   },
   {
-    year: '2021',
+    year: '2023',
     title: 'Global Recognition',
     description: 'Received industry awards for excellence in IT solutions'
   },
   {
-    year: '2023',
+    year: '2027',
     title: 'Future Forward',
     description: 'Pioneering next-generation technology solutions'
   }
@@ -95,7 +95,7 @@ const timeline = [
 const director = {
   name: 'Pramod Ojha',
   role: 'Director & Founder',
-  image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=800&q=80',
+  image: '../pramod-ojha.jpeg',
   bio: 'A visionary entrepreneur and technology pioneer, Mr. Pramod Ojha has been at the forefront of IT innovation for over two decades. His deep understanding of technology and unwavering commitment to excellence has transformed Aspiretechno Global into a beacon of trust and innovation in the IT industry.',
   vision: 'To empower businesses with cutting-edge technology solutions that not only meet today\'s challenges but anticipate tomorrow\'s opportunities. We believe in building lasting partnerships where your success becomes our shared story of achievement.',
   achievements: [
@@ -308,7 +308,8 @@ export default function About() {
                 <Image
                   src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&h=800&q=80"
                   alt="Our Mission"
-                  fill
+                  width={1200}
+                  height={675}
                   className="object-cover"
                 />
               </div>
@@ -377,7 +378,8 @@ export default function About() {
                 <Image
                   src={director.image}
                   alt={director.name}
-                  fill
+                  width={500}
+                  height={500}
                   className="object-cover"
                 />
               </div>

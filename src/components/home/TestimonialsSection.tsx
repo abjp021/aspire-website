@@ -9,30 +9,30 @@ import { HiUser } from 'react-icons/hi2';
 const testimonials = [
   {
     id: 1,
-    content: "Aspiretechno Global transformed our entire IT infrastructure. Their team's expertise and dedication to excellence made the transition seamless. We've seen a 40% improvement in system performance.",
-    author: "Sarah Chen",
-    position: "CTO",
-    company: "TechVision Inc.",
+    content: "Aspiretechno has been a reliable partner in managing and upgrading our entire IT infrastructure. Their team understands industry challenges and delivers solutions that are both scalable and secure. Their proactive support ensures that our operations run smoothly without interruption.",
+    author: "Rakesh Mehta",
+    position: "IT Head",
+    company: "Windar India Pvt. Ltd",
     image: "/clients/client-2.jpg",
     rating: 5,
     tags: ["Cloud Migration", "Infrastructure"]
   },
   {
     id: 2,
-    content: "The cybersecurity solutions implemented by Aspiretechno have given us peace of mind. Their proactive approach to security and 24/7 monitoring has prevented several potential breaches.",
-    author: "Michael Rodriguez",
-    position: "Head of Security",
-    company: "SecureBank",
+    content: "We approached Aspiretechno for cybersecurity and network enhancements across our pharma facilities. Their team demonstrated in-depth technical knowledge and provided us with a future-ready solution aligned with compliance standards. The responsiveness and professionalism of their team have been exceptional.",
+    author: "Om Bhatnagar",
+    position: "Sr. Manager",
+    company: "Rusan Pharma Ltd",
     image: "/clients/client-1.jpg",
     rating: 5,
     tags: ["Cybersecurity", "Monitoring"]
   },
   {
     id: 3,
-    content: "Working with Aspiretechno has been a game-changer for our business. Their cloud solutions have improved our efficiency by 50% and significantly reduced our operational costs.",
-    author: "Emily Watson",
-    position: "Operations Director",
-    company: "GlobalTech Solutions",
+    content: "From structured cabling to network optimization and ongoing AMC, Aspiretechno has delivered quality IT services with consistency. Their commitment to deadlines and hands-on approach has made them a trusted partner for our infrastructure needs. Highly recommended.",
+    author: "Dhaval Dalwadi",
+    position: "Sr. Manager, Information Technology",
+    company: "Navin Fluorine International Ltd.",
     image: "/clients/client-3.jpg",
     rating: 5,
     tags: ["Cloud Solutions", "Optimization"]
@@ -127,26 +127,17 @@ export default function TestimonialsSection() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {testimonials.map((t, idx) => (
-            <div key={t.id} className="bg-white rounded-2xl shadow-md p-8 flex flex-col items-center text-center">
+            <div key={t.id} className="relative bg-gradient-to-br from-white via-gray-50 to-blue-50 border-t-4 border-primary-500 rounded-2xl shadow-xl p-8 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105">
+              <div className="absolute -top-6 left-1/2 -translate-x-1/2 bg-primary-500 text-white rounded-full p-2 shadow-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-7 h-7">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25a2.25 2.25 0 1 1 0 4.5H6.75A2.25 2.25 0 0 1 4.5 10.5v-1.5A2.25 2.25 0 0 1 6.75 6.75h.75a2.25 2.25 0 0 1 2.25 2.25zm9 0a2.25 2.25 0 1 1 0 4.5h-.75A2.25 2.25 0 0 1 13.5 10.5v-1.5a2.25 2.25 0 0 1 2.25-2.25h.75a2.25 2.25 0 0 1 2.25 2.25z" />
+                </svg>
+              </div>
               <p className="text-gray-600 mb-8 flex-1">{t.content}</p>
-              <div className="flex flex-col items-center mt-auto">
-                <div className="w-20 h-20 rounded-full overflow-hidden bg-gray-100 mb-4 border border-gray-200">
-                  {t.image ? (
-                    <Image
-                      src={t.image}
-                      alt={t.author}
-                      width={80}
-                      height={80}
-                      className="object-cover rounded-full w-20 h-20"
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <HiUser className="w-10 h-10 text-gray-400" />
-                    </div>
-                  )}
-                </div>
+              <div className="flex flex-col items-center mt-auto gap-1">
                 <div className="font-bold text-gray-900 text-lg">{t.author}</div>
                 <div className="text-gray-500 text-base">{t.position}</div>
+                <div className="text-xs text-primary-500 font-semibold mt-1">{t.company}</div>
               </div>
             </div>
           ))}
